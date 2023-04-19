@@ -6,7 +6,8 @@ import { StatusCodes } from "http-status-codes";
 export class CreateClientController{
   async handle(req: Request, res: Response){
     const {username, password, name, email, number, address} = req.body;
-
+    
+    //Verificando se o cliente que o usuário deseja cadastrar já existe
     try{
       if(await prisma.client.findUnique({
         where: {

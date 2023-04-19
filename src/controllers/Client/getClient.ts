@@ -12,6 +12,7 @@ export class GetClientController{
       //Recebendo o Cliente buscado
       const client = await search.execute(username);
 
+      //Verificando se o cliente foi encontrado
       if (client === null){
         return res.status(StatusCodes.NOT_FOUND).send({
           error: "Cliente não encontrado"

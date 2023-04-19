@@ -12,6 +12,13 @@ export class GetAllClientsController{
       //Recebendo lista de Clientes
       const listClients = await search.execute();
 
+      //Verificando se existem clientes cadastrados
+      if(listClients == null){
+        return res.status(StatusCodes.NOT_FOUND).send({
+          error: "Não existem Clientes cadastrados"
+        })
+      }
+
       //Retornando a lista de Clientes
       return res.status(StatusCodes.OK).send({
        listClients,
