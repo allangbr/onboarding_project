@@ -3,7 +3,7 @@ import { prisma } from "../../service/prisma";
 import { DeleteClient } from "../../usecases/Client/deleteClient";
 import { StatusCodes } from "http-status-codes";
 
-export class GetClientController{
+export class DeleteClientController{
   async handle(req: Request, res: Response){
     const { username } = req.params;
     try{

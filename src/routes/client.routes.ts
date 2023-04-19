@@ -5,6 +5,7 @@ import { CreateClientController } from "../controllers/Client/createClient";
 import { GetAllClientsController } from "../controllers/Client/getAllClients";
 import { GetClientController } from "../controllers/Client/getClient";
 import { UpdateClientController } from "../controllers/Client/updateClient"; 
+import { DeleteClientController } from "../controllers/Client/deleteClient";
 
 export const clientRoutes = Router();
 
@@ -20,6 +21,9 @@ const getClientController = new GetClientController();
 //Instânciando o Controller do método UpdateClient
 const updateClientController = new UpdateClientController();
 
+//Instânciando o Controller do método DeleteClient
+const deleteClientController = new DeleteClientController();
+
 clientRoutes.post("/create", createClientController.handle);
 
 clientRoutes.get("/getAll", getAllClientsController.handle);
@@ -28,4 +32,4 @@ clientRoutes.get("/:username", getClientController.handle);
 
 clientRoutes.put("/:username", updateClientController.handle);
 
-clientRoutes.delete("/:username", );
+clientRoutes.delete("/:username", deleteClientController.handle);
