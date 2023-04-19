@@ -26,6 +26,6 @@ clientRoutes.get("/getAll", getAllClientsController.handle);
 
 clientRoutes.get("/:username", getClientController.handle);
 
-clientRoutes.put("/update", updateClientController.handle);
+clientRoutes.put("/:username", updateClientController.handle);
 
 clientRoutes.delete("/:username", );

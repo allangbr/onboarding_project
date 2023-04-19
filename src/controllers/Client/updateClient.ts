@@ -5,7 +5,8 @@ import { StatusCodes } from "http-status-codes";
 
 export class UpdateClientController{
   async handle(req: Request, res: Response){
-    const {username, password, name, email, number, address} = req.body;
+    const { username } = req.params;
+    const {password, name, email, number, address} = req.body;
 
     try{
       const testClient = await prisma.client.findUnique({
