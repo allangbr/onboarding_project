@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { CreateClientController } from "../controllers/Client/createClient";
-import { GetAllClientController } from "../controllers/Client/getAllClients";
+import { GetAllClientsController } from "../controllers/Client/getAllClients";
+import { GetClientController } from "../controllers/Client/getClient";
 
 export const clientRoutes = Router();
 
@@ -8,13 +9,16 @@ export const clientRoutes = Router();
 const createClientController = new CreateClientController();
 
 //Instânciando o Controller do método GetAllClients
-const getAllClientController = new GetAllClientController();
+const getAllClientsController = new GetAllClientsController();
+
+//Instânciando o Controller do método GetClient
+const getClientController = new GetClientController();
 
 clientRoutes.post("/create", createClientController.handle);
 
-clientRoutes.get("/getAll", getAllClientController.handle);
+clientRoutes.get("/getAll", getAllClientsController.handle);
 
-clientRoutes.get("/:username", );
+clientRoutes.get("/:username", getClientController.handle);
 
 clientRoutes.put("/:id", );
 

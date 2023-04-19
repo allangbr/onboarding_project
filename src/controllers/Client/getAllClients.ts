@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
-import { GetAllClient } from "../../usecases/Client/getAllClients";
+import { GetAllClients } from "../../usecases/Client/getAllClients";
 import { StatusCodes } from "http-status-codes";
 
-export class GetAllClientController{
+export class GetAllClientsController{
   async handle(req: Request, res: Response){
 
     try{
 
-      const search = new GetAllClient();
+      const search = new GetAllClients();
 
       //Recebendo lista de Clientes
       const listClients = await search.execute();

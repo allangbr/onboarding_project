@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { GetClient } from "../../usecases/Client/getClient";
 import { StatusCodes } from "http-status-codes";
 
-export class GetAllClientController{
+export class GetClientController{
   async handle(req: Request, res: Response){
     const { username } = req.params;
     try{
