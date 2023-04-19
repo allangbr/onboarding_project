@@ -18,10 +18,10 @@ export class CreateClientController{
 
       const create = new CreateClient();
 
-      //Criando Client
+      //Criando Cliente
       const client = await create.execute({username, password, name, email, number, address});
 
-      //Retornando Membro Cadastrado
+      //Retornando Cliente Cadastrado
       return res.status(StatusCodes.CREATED).send({
         client,
       },);
