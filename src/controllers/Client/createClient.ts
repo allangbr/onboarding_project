@@ -22,7 +22,7 @@ export class CreateClientController{
       const client = await create.execute({username, password, name, email, number, address});
 
       //Retornando Membro Cadastrado
-      return res.status(StatusCodes.OK).send({
+      return res.status(StatusCodes.CREATED).send({
         client,
       },);
     } catch (err){
