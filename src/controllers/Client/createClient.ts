@@ -13,7 +13,7 @@ export class CreateClientController{
           username: username
         }
       })){
-        return res.status(HTTPStatusCode.getMessage(401)).send({error: "Cliente Já Existente"})
+        return res.status(401).send({error: "Cliente Já Existente"})
       }
 
       const create = new CreateClient();
@@ -26,7 +26,7 @@ export class CreateClientController{
         client,
       },);
     } catch (err){
-      return res.status(HTTPStatusCode.getMessage(404)).send({error: "Falha no Registro do Cliente"});
+      return res.status(404).send({error: err});
     }
   }
 }
