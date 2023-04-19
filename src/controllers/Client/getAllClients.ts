@@ -17,7 +17,7 @@ export class GetAllClientController{
        listClients,
       },);
     } catch (err){
-      return res.status(StatusCodes.NOT_FOUND).send({error: "Falha na busca pelos Cliente"});
+      return res.status(StatusCodes.BAD_REQUEST).send({error: "Falha na busca pelos Cliente"});
     }
   }
 }
