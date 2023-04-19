@@ -1,0 +1,12 @@
+{
+  "name": "onboarding_project",
+  "version": "1.0.0",
+  "description": "API de uma Hamburgueria criada utilizando NodeJS, Prisma e Typescript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}
