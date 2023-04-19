@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { prisma } from "../../service/prisma";
 import { CreateClient } from "../../usecases/Client/createClient";
-var HTTPStatusCode = require('http-status-code');
+import { StatusCodes } from "http-status-codes";
 
 export class CreateClientController{
   async handle(req: Request, res: Response){
@@ -13,7 +13,7 @@ export class CreateClientController{
           username: username
         }
       })){
-        return res.status(401).send({error: "Cliente Já Existente"})
+        return res.status(StatusCodes.UNAUTHORIZED).send({error: "Cliente Já Existente"})
       }
 
       const create = new CreateClient();
@@ -22,11 +22,11 @@ export class CreateClientController{
       const client = await create.execute({username, password, name, email, number, address});
 
       //Retornando Membro Cadastrado
-      return res.send({
+      return res.status(StatusCodes.OK).send({
         client,
       },);
     } catch (err){
-      return res.status(404).send({error: err});
+      return res.status(StatusCodes.NOT_FOUND).send({error: "Falha no Registro do Cliente"});
     }
   }
 }
