@@ -22,7 +22,7 @@ export class GetAllOrderItemsController{
         listOrdersItems,
       },);
     } catch (err){
-      return res.status(StatusCodes.BAD_REQUEST).send({error: "Falha na busca pelos Pedidos de Itens"});
+      return res.status(StatusCodes.BAD_REQUEST).send({error: "Falha na busca pelos Pedidos dos Itens"});
     }
   }
 }
