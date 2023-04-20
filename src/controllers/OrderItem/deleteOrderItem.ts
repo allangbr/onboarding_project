@@ -1,14 +1,11 @@
 import { Request, Response } from "express";
 import { prisma } from "../../service/prisma";
-import { UpdateOrderItem } from "../../usecases/OrderItem/updateOrderItem";
+import { DeleteOrderItem } from "../../usecases/OrderItem/deleteOrderItem";
 import { StatusCodes } from "http-status-codes";
 
-export class UpdateOrderItemController{
+export class DeleteOrderItemController{
   async handle(req: Request, res: Response){
     const { id } = req.params;
-    const {order_id, item_id, amount} = req.body;
-
-    
     try{
       //Validando se o pedido do item informado existe
       const testOrderItem = await prisma.orderItem.findUnique({
@@ -20,17 +17,17 @@ export class UpdateOrderItemController{
         return res.status(StatusCodes.UNAUTHORIZED).send({error: "O Pedido do Item informado não existe"})
       }
 
-      const update = new UpdateOrderItem();
+      const deleteOrderItem = new DeleteOrderItem();
 
-      //Atualizando o Pedido do Item
-      const orderItem = await update.execute(Number(id), {order_id, item_id, amount});
+      //Deletando o Pedido do Item
+      const deletedOrderItem = await deleteOrderItem.execute(Number(id));
 
-      //Retornando Pedido do Item Atualizado
-      return res.status(StatusCodes.CREATED).send({
-        orderItem,
+      //Retornando o Pedido do Item
+      return res.status(StatusCodes.OK).send({
+        deletedOrderItem,
       },);
     } catch (err){
-      return res.status(StatusCodes.BAD_REQUEST).send({error: "Falha na Atualização do Pedido do Item"});
+      return res.status(StatusCodes.BAD_REQUEST).send({error: "Falha na exclusão do Pedido do Item"});
     }
   }
 }
