@@ -5,7 +5,7 @@ import { CreateOrderController } from "../controllers/Order/CreateOrder";
 
 export const orderRoutes = Router();
 
-//Instânciando o Controller do método CreateClient
+//Instânciando o Controller do método CreateOrder
 const createOrderController = new CreateOrderController();
 
 //Estabelecendo as rotas
