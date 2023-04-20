@@ -32,10 +32,10 @@ export class CreateOrderItemController{
       
       const create = new CreateOrderItem();
 
-      //Criando Item do Pedido
+      //Criando Pedido de Item
       const orderItem = await create.execute({order_id, item_id, amount});
 
-      //Retornando Item do Pedido Cadastrado
+      //Retornando Pedido do item Cadastrado
       return res.status(StatusCodes.CREATED).send({
         orderItem,
       },);
