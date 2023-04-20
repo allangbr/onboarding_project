@@ -27,7 +27,7 @@ export class DeleteClientController{
         deletedClient,
       },);
     } catch (err){
-      return res.status(StatusCodes.BAD_REQUEST).send({error: "Falha na busca pelo Cliente"});
+      return res.status(StatusCodes.BAD_REQUEST).send({error: "Falha na exclusão do Cliente"});
     }
   }
 }

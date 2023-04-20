@@ -27,7 +27,7 @@ export class DeleteOrderController{
         deletedOrder,
       },);
     } catch (err){
-      return res.status(StatusCodes.BAD_REQUEST).send({error: "Falha na busca pelo Pedido"});
+      return res.status(StatusCodes.BAD_REQUEST).send({error: "Falha na exclusão do Pedido"});
     }
   }
 }

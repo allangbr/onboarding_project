@@ -27,7 +27,7 @@ export class DeleteMenuItemController{
         deletedMenuItem,
       },);
     } catch (err){
-      return res.status(StatusCodes.BAD_REQUEST).send({error: "Falha na deleção do Item"});
+      return res.status(StatusCodes.BAD_REQUEST).send({error: "Falha na exclusão do Item"});
     }
   }
 }
