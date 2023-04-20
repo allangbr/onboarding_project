@@ -3,6 +3,7 @@ import { prisma } from "../../service/prisma";
 import { CreateClient } from "../../usecases/Client/createClient";
 import { StatusCodes } from "http-status-codes";
 const bcrypt = require('bcrypt');
+
 export class CreateClientController{
   async handle(req: Request, res: Response){
     const {username, password, name, email, number, address} = req.body;
