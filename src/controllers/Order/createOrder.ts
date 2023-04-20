@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { prisma } from "../../service/prisma";
-import { CreateOrder } from "../../usecases/Order/CreateOrder";
+import { CreateOrder } from "../../usecases/Order/createOrder";
 import { StatusCodes } from "http-status-codes";
 
 import { GetClient } from "../../usecases/Client/getClient";

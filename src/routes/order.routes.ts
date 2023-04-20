@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 //Importando os Controllers das Funções
-import { CreateOrderController } from "../controllers/Order/CreateOrder";
+import { CreateOrderController } from "../controllers/Order/createOrder";
 import { GetAllOrdersController } from "../controllers/Order/getAllOrders";
 import { GetOrderController } from "../controllers/Order/getOrder";
 
