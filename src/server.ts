@@ -16,5 +16,5 @@ app.use(cors());
 app.use(apiRoutes);
 
 app.listen(process.env.PORT || 3000, () => {
-  console.log("Server is running in port 3000!")
+  console.log("Server is running!")
 })
