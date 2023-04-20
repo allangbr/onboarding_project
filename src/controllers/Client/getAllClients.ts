@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { GetAllClients } from "../../usecases/Client/getAllClients";
 import { StatusCodes } from "http-status-codes";
-
 export class GetAllClientsController{
   async handle(req: Request, res: Response){
 

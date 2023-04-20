@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { AuthMiddleware } from "../middlewares/auth";
 
 //Importando os Controllers das Funções
 import { CreateMenuItemController } from "../controllers/MenuItem/createMenuItem";
@@ -23,6 +24,10 @@ const updateMenuItemController = new UpdateMenuItemController();
 
 //Instânciando o Controller do método DeleteMenuItem
 const deleteMenuItemController = new DeleteMenuItemController();
+
+//Inserindo autenticação na rota
+const authMiddleware = new AuthMiddleware();
+menuItemRoutes.use(authMiddleware.execute);
 
 //Estabelecendo as rotas
 menuItemRoutes.post("/create", createMenuItemController.handle);

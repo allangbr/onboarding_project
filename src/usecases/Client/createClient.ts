@@ -3,7 +3,7 @@ import { prisma } from "../../service/prisma";
 
 export interface typeClient {
   username: string,
-  password: string,
+  hashPassword: string,
   name: string,
   email: string,
   number: string,
@@ -11,11 +11,11 @@ export interface typeClient {
 }
 
 export class CreateClient {
-  async execute({username, password, name, email, number, address}:typeClient):Promise<Client>{
+  async execute({username, hashPassword, name, email, number, address}:typeClient):Promise<Client>{
     const newClient = await prisma.client.create({
       data: {
         username: username,
-        password: password,
+        password: hashPassword,
         name: name,
         email: email,
         number: number,
