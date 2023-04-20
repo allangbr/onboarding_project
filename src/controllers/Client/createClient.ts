@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { prisma } from "../../service/prisma";
 import { CreateClient } from "../../usecases/Client/createClient";
 import { StatusCodes } from "http-status-codes";
-
+const bcrypt = require('bcrypt');
 export class CreateClientController{
   async handle(req: Request, res: Response){
     const {username, password, name, email, number, address} = req.body;
@@ -19,8 +19,10 @@ export class CreateClientController{
 
       const create = new CreateClient();
 
+      const hashPassword = await bcrypt.hash(password, 10);
+
       //Criando Cliente
-      const client = await create.execute({username, password, name, email, number, address});
+      const client = await create.execute({username, hashPassword, name, email, number, address});
 
       //Retornando Cliente Cadastrado
       return res.status(StatusCodes.CREATED).send({
