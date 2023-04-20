@@ -26,9 +26,7 @@ const updateOrderController = new UpdateOrderController();
 const deleteOrderController = new DeleteOrderController();
 
 //Inserindo autenticação na rota
-
 const authMiddleware = new AuthMiddleware();
-
 orderRoutes.use(authMiddleware.execute);
 
 //Estabelecendo as rotas
