@@ -10,6 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+//Modelo do Cliente
 model Client {
   id        Int      @id @unique @default(autoincrement())
   username String    @unique @db.VarChar(60)
@@ -23,6 +24,7 @@ model Client {
   @@map("client")
 }
 
+//Modelo do Pedido
 model Order {
   id          Int           @id @default(autoincrement())
   client_username  String
@@ -34,6 +36,7 @@ model Order {
   @@map("order")
 }
 
+//Modelo do ItemMenu
 model MenuItem {
   id          Int           @id @default(autoincrement())
   name        String
@@ -44,6 +47,7 @@ model MenuItem {
   @@map("menuItem")
 }
 
+//Modelo do ItemPedido
 model OrderItem {
   id        Int      @id @default(autoincrement())
   order_id Int
