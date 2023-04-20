@@ -1,11 +1,8 @@
 import { Request, Response } from "express";
 import { prisma } from "../../service/prisma";
-import { GetClient } from "../../usecases/Client/getClient";
+import { GenerateToken } from "../../service/generateToken";
 import { StatusCodes } from "http-status-codes";
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-
-const authConfig = require("../../config/auth");
 
 export class AuthenticateController{
   async handle(req: Request, res: Response){
@@ -25,13 +22,11 @@ export class AuthenticateController{
         return res.status(StatusCodes.UNAUTHORIZED).send({error: "Senha incorreta"})
       }
 
-      const token = jwt.sign({ username: client.username }, authConfig.secret, {
-        expiresIn: 86400,
-      });
+      const generate = new GenerateToken();
 
-      //Retornando Cliente
+      //Retornando Cliente com o Token
       return res.status(StatusCodes.OK).send({
-        client, token
+        client, token: await generate.execute(username) 
       },);
     } catch (err){
       return res.status(StatusCodes.BAD_REQUEST).send({error: "Falha na Autenticação"});

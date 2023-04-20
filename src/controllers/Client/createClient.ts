@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { prisma } from "../../service/prisma";
 import { CreateClient } from "../../usecases/Client/createClient";
+import { GenerateToken } from "../../service/generateToken";
 import { StatusCodes } from "http-status-codes";
 const bcrypt = require('bcrypt');
 
@@ -20,6 +21,8 @@ export class CreateClientController{
 
       const create = new CreateClient();
 
+      const generate = new GenerateToken();
+
       const hashPassword = await bcrypt.hash(password, 10);
 
       //Criando Cliente
@@ -27,7 +30,7 @@ export class CreateClientController{
 
       //Retornando Cliente Cadastrado
       return res.status(StatusCodes.CREATED).send({
-        client,
+        client, token: await generate.execute(username) 
       },);
     } catch (err){
       return res.status(StatusCodes.BAD_REQUEST).send({error: "Falha no Registro do Cliente"});
