@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { AuthMiddleware } from "../middlewares/auth";
 
 //Importando os Controllers das Funções
 import { CreateOrderItemController } from "../controllers/OrderItem/createOrderItem";
@@ -23,6 +24,10 @@ const updateOrderItemController = new UpdateOrderItemController();
 
 //Instânciando o Controller do método DeleteOrderItem
 const deleteOrderItemController = new DeleteOrderItemController();
+
+//Inserindo autenticação na rota
+const authMiddleware = new AuthMiddleware();
+orderItemRoutes.use(authMiddleware.execute);
 
 //Estabelecendo as rotas
 orderItemRoutes.post("/create", createOrderItemController.handle);
