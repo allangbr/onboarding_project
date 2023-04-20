@@ -5,6 +5,7 @@ import { CreateMenuItemController } from "../controllers/MenuItem/createMenuItem
 import { GetAllMenuItemsController } from "../controllers/MenuItem/getAllMenuItems";
 import { GetMenuItemController } from "../controllers/MenuItem/getMenuItem";
 import { UpdateMenuItemController } from "../controllers/MenuItem/updateMenuItem";
+import { DeleteMenuItemController } from "../controllers/MenuItem/deleteMenuItem";
 
 export const menuItemRoutes = Router();
 
@@ -20,6 +21,9 @@ const getMenuItemController = new GetMenuItemController();
 //Instânciando o Controller do método GetMenuItem
 const updateMenuItemController = new UpdateMenuItemController();
 
+//Instânciando o Controller do método DeleteMenuItem
+const deleteMenuItemController = new DeleteMenuItemController();
+
 //Estabelecendo as rotas
 menuItemRoutes.post("/create", createMenuItemController.handle);
 
@@ -29,4 +33,4 @@ menuItemRoutes.get("/:id", getMenuItemController.handle);
 
 menuItemRoutes.put("/:id", updateMenuItemController.handle);
 
-menuItemRoutes.delete("/:id", );
+menuItemRoutes.delete("/:id", deleteMenuItemController.handle);
