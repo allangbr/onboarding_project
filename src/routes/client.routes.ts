@@ -24,6 +24,7 @@ const updateClientController = new UpdateClientController();
 //Instânciando o Controller do método DeleteClient
 const deleteClientController = new DeleteClientController();
 
+//Estabelecendo as rotas
 clientRoutes.post("/create", createClientController.handle);
 
 clientRoutes.get("/getAll", getAllClientsController.handle);
