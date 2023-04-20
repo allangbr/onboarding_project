@@ -5,6 +5,7 @@ import { CreateOrderItemController } from "../controllers/OrderItem/createOrderI
 import { GetAllOrderItemsController } from "../controllers/OrderItem/getAllOrderItems";
 import { GetOrderItemController } from "../controllers/OrderItem/getOrderItem";
 import { UpdateOrderItemController } from "../controllers/OrderItem/updateOrderItem";
+import { DeleteOrderItemController } from "../controllers/OrderItem/deleteOrderItem";
 
 export const orderItemRoutes = Router();
 
@@ -20,6 +21,8 @@ const getOrderItemController = new GetOrderItemController();
 //Instânciando o Controller do método UpdateOrderItem
 const updateOrderItemController = new UpdateOrderItemController();
 
+//Instânciando o Controller do método DeleteOrderItem
+const deleteOrderItemController = new DeleteOrderItemController();
 
 //Estabelecendo as rotas
 orderItemRoutes.post("/create", createOrderItemController.handle);
@@ -30,4 +33,4 @@ orderItemRoutes.get("/:id", getOrderItemController.handle);
 
 orderItemRoutes.put("/:id", updateOrderItemController.handle);
 
-orderItemRoutes.delete("/:id", );
+orderItemRoutes.delete("/:id", deleteOrderItemController.handle);
