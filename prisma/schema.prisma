@@ -11,8 +11,8 @@ datasource db {
 }
 
 model Client {
-  id        Int      @unique @default(autoincrement())
-  username String    @id @unique @db.VarChar(60)
+  id        Int      @id @unique @default(autoincrement())
+  username String    @unique @db.VarChar(60)
   password String    @db.VarChar(60)
   name      String   
   email     String
@@ -25,8 +25,8 @@ model Client {
 
 model Order {
   id          Int           @id @default(autoincrement())
-  client_id  Int
-  client    Client       @relation(fields: [client_id], references: [id])
+  client_username  String
+  client    Client       @relation(fields: [client_username], references: [username])
   data        DateTime      @default(now())
   status      String        @default("em andamento")
   orderItems OrderItem[]
